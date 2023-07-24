@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Edit Pet Form {% endblock %}
+
+{% block content %}
+
+<h1>{{ pet.name }}</h1>
+
+    {% if pet.photo_url %}
+        <img src="{{ pet.photo_url }}" style="max-width: 320px; max-height: 180px;" alt="{{ pet.name }} the {{ pet.species }}">
+    {% endif %}
+
+<p>Species: {{pet.species}}</p>
+<p>Age: {{ pet.age }}</p>
+
+<h2>Update Info</h2>
+
+    <form method="POST">
+        {% include "form.html" %}
+        <button type="submit">Update</button>
+    </form>
+
+{% endblock %}

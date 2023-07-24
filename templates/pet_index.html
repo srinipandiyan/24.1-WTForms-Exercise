@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Pet Adoption Homepage {% endblock %}
+
+{% block content %}
+
+<h1>Our Pets</h1>
+
+<div>
+
+  {% for pet in pets %}
+
+        <div>
+            <img src="{{ pet.photo_url }}" style="max-width: 320px; max-height: 180px;" alt="{{ pet.name }} the {{ pet.species }}"><br>
+            <a href="{{ url_for('edit_pet', pet_id=pet.id) }}">{{ pet.name }} </a>
+            {% if pet.available %} <b>is available!</b> {% endif %}
+        </div><br>
+
+    {% else %}
+
+        <div>No pets yet.</div>
+
+  {% endfor %}
+
+</div><br>
+
+<div>
+  <a href="{{ url_for('add_new_pet') }}">Add Pet</a>
+</div>
+
+{% endblock %}
